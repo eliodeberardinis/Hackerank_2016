@@ -3,6 +3,7 @@
 Hackerrank nickname: eliodeb
 
 Hackerrank profile link:  http://www.hackerrank.com/eliodeb
+
 Domains, points and current rank:
 -	 C/C++
  Points: 571
@@ -11,6 +12,7 @@ Domains, points and current rank:
 -	Algorithm (solved in C++)
 Points: 256
 Rank:   61743
+
 Total Points: 827
 
 The aim of this coursework was to obtain at least 400 points on the website “Hackerrank” that provides users with many problems in different areas of programming and using different languages such as C/C++, Java, Python etc.
