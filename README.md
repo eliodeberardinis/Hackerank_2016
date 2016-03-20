@@ -13,7 +13,7 @@ Domains, points and current rank:
 Points: 256
 Rank:   61743
 
-Total Points: 827
+Total Points: #827
 
 The aim of this coursework was to obtain at least 400 points on the website “Hackerrank” that provides users with many problems in different areas of programming and using different languages such as C/C++, Java, Python etc.
 I am currently learning C++ so I solved all my exercises using this programming language. Specifically the domains that I worked on Hackerrank were “C/C++” that contains exercises specifically designed for this language and “Algorithm” where the exercises can be solved in your preferred language. Once again, I used C++ in all the tasks I solved there as well.
@@ -50,11 +50,9 @@ Introduction:
 
 ##CREDITS
 
-Jean-Pascal for helping with the move_ship function and adding sprites rotation.
 
-Mircea for helping with CSV file, shader implementation and solving many small problems here and there.
+Mircea for helping with a few challenging problems
 
-Tin-Tin for helping with get_position function.
 
 
 ##Images:
