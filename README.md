@@ -8,12 +8,12 @@ Domains, points and current rank:
 -	 C/C++
 
  Points: 571
- Rank:   161
+    Rank:   161
 
 -	Algorithm (solved in C++)
 
-Points: 256
-Rank:   61743
+ Points: 256
+    Rank:   61743
 
 Total Points: 827
 
