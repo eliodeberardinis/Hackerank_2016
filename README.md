@@ -1,6 +1,7 @@
 #Advanced Game Programming – Assignment 1: Obtaining 400 points on Hackerrank
 
 Hackerrank nickname: eliodeb
+
 Hackerrank profile link:  http://www.hackerrank.com/eliodeb
 Domains, points and current rank:
 -	 C/C++
