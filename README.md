@@ -7,15 +7,17 @@ Hackerrank profile link:  http://www.hackerrank.com/eliodeb
 Domains, points and current rank:
 -	 C/C++
 
- Points: 571
-    Rank:   161
+ Points: **571**
+
+ Rank:   **161**
 
 -	Algorithm (solved in C++)
 
- Points: 256
-    Rank:   61743
+ Points: **256**
 
-Total Points: 827
+ Rank:   **61743**
+
+**Total Points: 827**
 
 ##Introduction
 
@@ -65,7 +67,7 @@ int main() {
 ##CREDITS
 
 
-Mircea for helping with a few challenging problems
+Mircea for helping with a few challenging problems.
 
 
 
