@@ -17,7 +17,7 @@ Domains, points and current rank:
 
 Total Points: 827
 
-###Introduction
+##Introduction
 
 The aim of this coursework was to obtain at least 400 points on the website “Hackerrank” that provides users with many problems in different areas of programming and using different languages such as C/C++, Java, Python etc.
 I am currently learning C++ so I solved all my exercises using this programming language. Specifically the domains that I worked on Hackerrank were “C/C++” that contains exercises specifically designed for this language and “Algorithm” where the exercises can be solved in your preferred language. Once again, I used C++ in all the tasks I solved there as well.
@@ -40,16 +40,26 @@ In the algorithm domain users can solve the challenges is their preferred langua
 In Warmup the challenges revolve mostly around simple math tasks, matrices manipulation and time conversion.
 In Implementation the tasks become more varied and complicated requiring extra use of logic skills among more refined optimization techniques and a deeper understanding of math and number theory.
 In this domain I could test my logic skills as well as applying what I learned in the C++ section. I found that the community on the website was very helpful and you get quick replies with hints that lead you to the solution stimulating your thinking. I was glad I could contribute in giving advice to other users when I could figure out a good solution to some of the problems.
+I will definitely continue solving challenges in this domain to further improve my C++ programming skills. I also plan on using this website to practice coding in Python in the future.
 Once again, the challenges I solved are listed below and separated in their subdomains. The challenge names are clearly listed with my code solution right after. Full challenge details can be found on Hackerrank as previously stated.
 
-C/C++ Domain
+#Challenges Solved with solution code
 
-Introduction:
+##C/C++ Domain
 
+###Introduction:
 
+Hello, World !
 
+#include <iostream>
+#include <cstdio>
+using namespace std;
 
-##Challenges Solved with solution code
+int main() {
+    printf("Hello, World!");
+    return 0;
+}
+
 
 
 ##CREDITS
@@ -58,8 +68,6 @@ Introduction:
 Mircea for helping with a few challenging problems
 
 
-
-##Images:
 
 
 
