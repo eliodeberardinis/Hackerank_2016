@@ -5,13 +5,13 @@ Hackerrank nickname: eliodeb
 Hackerrank profile link:  http://www.hackerrank.com/eliodeb
 
 Domains, points and current rank:
--	 C/C++
+-	 **C/C++**
 
  Points: **571**
 
  Rank:   **161**
 
--	Algorithm (solved in C++)
+-	**Algorithm (solved in C++)**
 
  Points: **256**
 
@@ -1310,8 +1310,682 @@ class D: protected A,B,C
 		 void check(int); //Do not delete this line.
 };
 ```
+##Algorithm Domain
+
+###Warmup:
+
+ - **Solve Me First**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
 
 
+int solveMeFirst(int a, int b) {
+  return a+b;
+}
+int main() {
+  int num1, num2;
+  int sum;
+  cin>>num1>>num2;
+  sum = solveMeFirst(num1,num2);
+  cout<<sum;
+  return 0;
+}
+```
+
+ - **Simple Array Sum**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main(){
+    int n;
+    int sum=0;
+    cin >> n;
+    vector<int> arr(n);
+    for(int arr_i = 0;arr_i < n;arr_i++){
+       cin >> arr[arr_i];
+    }
+    
+    for(int arr_i = 0;arr_i < n;arr_i++){
+       sum+= arr[arr_i];
+    }
+    
+    cout<<sum;
+    
+    return 0;
+}
+```
+
+ - **A Very Big Sum**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main(){
+    int n;
+    cin >> n;
+    
+    long long int sum=0;
+    
+    vector<int> arr(n);
+    for(int arr_i = 0;arr_i < n;arr_i++){
+       cin >> arr[arr_i];
+    }
+    
+     for(int arr_i = 0;arr_i < n;arr_i++){
+       sum+= arr[arr_i];
+    }
+    
+    cout<<sum;
+    
+    
+    return 0;
+}
+```
+
+ - **Diagonal Difference**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main(){
+    int n;
+    cin >> n;
+    int diag_a =0;
+    int diag_b =0;
+    int result;
+    
+    vector< vector<int> > a(n,vector<int>(n));
+    for(int a_i = 0;a_i < n;a_i++){
+       for(int a_j = 0;a_j < n;a_j++){
+          cin >> a[a_i][a_j];
+       }
+    }
+    
+    int k=0;
+    int l=n-1 ;
+        
+    for(int i =0; i<n; ++i){
+        diag_a += a[i][k];
+        diag_b += a[i][l];
+        k++;  
+        l--;
+    }
+    
+    result = abs(diag_a-diag_b);
+    
+    cout<<result;
+    
+    
+    return 0;
+}
+```
+
+ - **Plus Minus**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main(){
+    int n;
+    float pos= 0.0f;
+    float neg = 0.0f;
+    float zero = 0.0f;
+    float pos_part, neg_part, zero_part;
+    cin >> n;
+    vector<float> arr(n);
+    for(int arr_i = 0;arr_i < n;arr_i++){
+       cin >> arr[arr_i];
+        
+       if      (arr[arr_i] > 0) {pos++;}
+       else if (arr[arr_i] < 0) {neg++;}
+       else if (arr[arr_i]==0)  {zero++;}
+    }
+    
+    pos_part = pos/n;
+    neg_part = neg/n;
+    zero_part = zero/n;
+    
+    cout<<pos_part<<"\n";
+    cout<<neg_part<<"\n";
+    cout<<zero_part;
+    
+    return 0;
+}
+```
+
+ - **Staircase**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main(){
+    
+    int n, space, hash;
+    cin>>n;
+    
+for( int i = 0; i<n; i++)
+{
+    space = (n-1)-i;
+    hash = i+1; 
+    while(space != 0)
+    {
+        cout<<" ";
+        space--;
+    }
+    while( hash!= 0 )
+    {
+        cout<<"#";
+        hash--;
+    }
+    cout<<"\n";
+
+}
+    return 0;
+}
+```
+
+ - **Time Conversion**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <stdio.h>
+#include <string.h>
+using namespace std;
+
+int main() {
+    int hh, mm, ss ;
+    char t12[2];
+    scanf("%d:%d:%d%s", &hh, &mm, &ss, t12) ;
+
+    if (strcmp(t12,"PM")==0 && hh!=12) hh += 12 ;
+    if (strcmp(t12,"AM")==0 && hh==12) hh = 0 ;
+
+    printf("%02d:%02d:%02d", hh, mm, ss) ;
+    return 0;
+}
+```
+###Implementation:
+
+ - **Angry Professor**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <string>
+using namespace std;
+
+int main(){
+    
+    vector<string> results;
+    int t;
+    cin >> t;
+    
+    for(int a0 = 0; a0 < t; a0++){
+        
+        int count = 0;
+        int n;
+        int k;
+        cin >> n >> k;
+        
+        vector<int> a(n);
+        
+        for(int a_i = 0;a_i < n;a_i++){
+          
+            cin >> a[a_i];
+            if(a[a_i] <=0) {count++;}
+        }
+        
+        if(count >= k) {results.push_back("NO");}
+        else           {results.push_back("YES");}
+        
+    }
+    
+    for(int i = 0; i < results.size(); ++i){
+        
+        cout<<results[i]<<"\n";
+        
+    }
+    
+    return 0;
+}
+```
+
+ - **Sherlock and The Beast** (Editorial read, not counting for the score)
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int n,test,k,kstart;
+    scanf("%d",&test);
+    while(test--)
+    {
+        scanf("%d",&n);
+        string ks;
+        for(int j=n;j>=0;j--)
+        {
+            if(j%3==0 && (n-j)%5==0)
+            {
+                ks="";
+                for(int k=0;k<j;k++)
+                    ks+='5';
+                for(int k=0;k<n-j;k++)
+                    ks+='3';
+                break;
+            }
+        }
+        if(ks=="")
+            cout<<"-1\n";
+        else
+            cout<<ks<<endl;
+    }
+    return 0;
+}
+```
+
+ - **Utopian Tree**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main(){
+    int t;
+    cin >> t;
+    vector<int>results;
+    
+    for(int a0 = 0; a0 < t; a0++){
+        
+        int height = 1;
+        bool is_spring = true;
+        int n;
+        cin >> n;
+        
+        for(int i = 0; i<n; ++i)
+            {
+            
+            if(is_spring)
+            {
+                height = height*2;
+                is_spring = false;
+            }
+            
+            else    
+            {
+                
+                height= height+1;
+                is_spring = true;
+            }
+            
+        }
+        
+        results.push_back(height);
+        
+    }
+    
+    for(int i = 0; i<results.size(); ++i){
+        
+        cout<<results[i]<<"\n";
+    }
+    
+    return 0;
+}
+```
+
+ - **Find Digits**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main(){
+    int t;
+    cin >> t;
+    vector<int>results;
+    
+    for(int a0 = 0; a0 < t; a0++){
+        int n;
+        int temp;
+        int digit;
+        int count = 0;
+        cin >> n;
+        temp = n;
+        
+        while(n) {
+                        digit = n % 10;
+                       
+                        n = n/10;
+                      
+                       if(digit!=0 && temp%digit == 0) {count++;}
+                   }
+        
+        results.push_back(count);
+    }
+    
+    for(int i=0;i<results.size();++i){
+        
+        cout<<results[i]<<"\n";
+        
+    }
+    
+    return 0;
+}
+```
+
+ - **Sherlock and Squares**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+   
+    int t;
+    cin >> t;
+
+    
+    for(int a0 = 0; a0 < t; a0++){
+        int a;
+        int b;
+        int count = 0;
+        cin >> a >> b;
+        int range;
+        
+        for(range = a; range <=b; ++range){
+            
+            
+           int temp = sqrt(range);
+            
+            if(temp*temp == range)
+            
+            {
+                
+                count++;
+                range += temp*2 ;
+            }
+            
+          
+            
+        }
+        
+      
+        cout<<count<<"\n";
+    }
+    
+  
+    return 0;
+}
+```
+
+ - **Cut the sticks**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main(){
+    int n;
+    cin >> n;
+    vector<int> arr(n);
+    vector<int> new_arr;
+    
+    for(int arr_i = 0;arr_i < n;arr_i++){
+       cin >> arr[arr_i];
+    }
+    
+    while(arr.size()>0){
+    sort(arr.begin(),arr.end());
+    
+    
+    for(int i = 0; i<arr.size();++i){
+        
+        int temp = arr[i] - arr[0];
+        
+        if(temp > 0){new_arr.push_back(temp);}
+        
+    }
+    
+    int cut = arr.size() - new_arr.size();
+        
+    cout<<new_arr.size() + cut <<"\n";
+    
+    arr.clear();
+    arr = new_arr;
+    new_arr.clear();
+        
+    }
+    
+    return 0;
+}
+```
+
+ - **Chocolate Feast**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main(){
+    int t;
+    cin >> t;
+    for(int a0 = 0; a0 < t; a0++){
+        int n;
+        int c;
+        int m;
+        int bought = 0;
+        int exchanged = 0;
+        int extra = 0;
+        int extra_of_extra = 0;
+        int final_extra = 0;
+        int final_final_extra = 0;
+        int extra_of_extra_of_extra=0;
+        int total = 0;
+        int leftover = 0;
+        
+        cin >> n >> c >> m;
+        
+        bought = n/c;
+        
+        exchanged = bought/m;
+        
+        leftover = bought%m;
+        
+        if(exchanged + leftover >= m){
+            
+        extra = (exchanged + leftover)/m;
+        if (extra>=m) {extra_of_extra = extra%m;}
+            
+        }
+        
+         if(extra + extra_of_extra >= m){
+            
+            final_extra = (extra + extra_of_extra)/m;
+            if (final_extra>=m) {extra_of_extra_of_extra = final_extra%m; }
+            
+        }
+        
+        
+        final_final_extra = (final_extra + extra_of_extra_of_extra)/m;
+            
+        total = bought+exchanged+extra+final_extra + final_final_extra ;
+        
+        cout<<total<<"\n";
+          
+    }
+    return 0;
+}
+```
+
+ - **Cavity Map**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <string>
+using namespace std;
+
+
+int main(){
+    int n;
+    string number;
+    cin >> n;
+    
+    int** grid = new int*[n];
+    for(int i = 0; i < n; ++i) {grid[i] = new int[n];}
+    
+    char** grid2 = new char*[n];
+    for(int i = 0; i < n; ++i) {grid2[i] = new char[n];}
+    
+   for(int i = 0; i < n; i++){
+       
+       cin>>number;
+    
+    for (int j = 0; j < n; j++)
+       {
+        
+              grid[i][j] = (int)number[j];
+       }
+   }
+      
+    for(int i=0; i < n; i++){
+        for(int j = 0; j<n; j++){
+            
+        grid2[i][j] =  (char)grid[i][j];     
+             
+            
+     if(i > 0 && i < (n-1) && j > 0 && j < (n-1)){
+           
+     if (grid[i][j] > grid[i - 1][j] && grid[i][j] > grid[i+1][j] && grid[i][j] > grid[i][j - 1] && grid[i][j] > grid[i][j+ 1] )
+         
+           {grid2[i][j] = 'X';}
+       }
+            
+        }
+    }
+    
+    for(int i=0; i < n; i++){
+        for(int j = 0; j<n; j++){
+            
+       cout << grid2[i][j];
+        
+       
+            
+        }
+        
+      cout<<endl;
+    }
+       
+    delete grid;
+    delete grid2;
+    
+    return 0;
+}
+```
+
+ - **Taum and B'day**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main(){
+    int t;
+    cin >> t;
+    for(int a0 = 0; a0 < t; a0++){
+        int b;
+        int w;
+        long long int cost = 0;
+        cin >> b >> w;
+        long long int x;
+        long long int y;
+        long long int z;
+        cin >> x >> y >> z;
+        
+
+        
+        if(x > y && (y*b + b*z) < (x*b)) {
+        
+            cost = (w*y +  y*b + b*z);
+        }
+                
+        else if(y > x && (x*w + w*z) < (y*w)){
+        
+            cost = (x*b + x*w + w*z);
+        }
+        
+        else {cost = x*b + y*w;}
+        
+         cout<<cost<<endl;
+        
+    }
+    return 0;
+}
+```
 
 ##CREDITS
 
