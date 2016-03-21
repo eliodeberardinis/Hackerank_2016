@@ -489,6 +489,348 @@ int main() {
 }
 ```
 
+###Classes:
+
+ - **Structs**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+struct Student {
+    
+    int age;
+    string first_name;
+    string last_name;
+    int standard;
+    
+};
+
+int main() {
+    Student st;
+    
+    cin >> st.age >> st.first_name >> st.last_name >> st.standard;
+    cout << st.age << " " << st.first_name << " " << st.last_name << " " << st.standard;
+    
+    return 0;
+}
+```
+
+ - **Class**
+```cpp
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+class Student{
+     private:
+    int age, standard;
+    string first_name, last_name;
+    stringstream ss;
+    char ch = ',';
+    
+    public:
+    
+   void set_age(int age_){
+        
+        age = age_;
+        
+    }
+    
+    int get_age(){
+        
+        return age;
+    }
+    
+   void set_first_name(string first_name_){
+        
+        first_name = first_name_;
+        
+    }
+    
+    string get_first_name(){
+        
+        return first_name;
+    }
+    
+      void set_last_name(string last_name_){
+        
+        last_name = last_name_;
+        
+    }
+    
+    string get_last_name(){
+        
+        return last_name;
+    }
+    
+     void set_standard(int standard_){
+        
+        standard = standard_;
+        
+    }
+    
+    int get_standard(){
+        
+        return standard;
+    }
+    
+  string to_string()
+  { 
+ ss<<age<<ch<<first_name<<ch<<last_name<<ch<<standard;  
+ return ss.str();
+  }
+    
+    
+    
+};
+
+int main() {
+    int age, standard;
+    string first_name, last_name;
+    
+    cin >> age >> first_name >> last_name >> standard;
+    
+    Student st;
+    st.set_age(age);
+    st.set_standard(standard);
+    st.set_first_name(first_name);
+    st.set_last_name(last_name);
+    
+    cout << st.get_age() << "\n";
+    cout << st.get_last_name() << ", " << st.get_first_name() << "\n";
+    cout << st.get_standard() << "\n";
+    cout << "\n";
+    cout << st.to_string();
+    
+    return 0;
+}
+```
+
+ - **Classes and Objects**
+```cpp
+// Write your Student class here
+
+class Student {
+    
+    private:
+    int scores[5];
+    
+    
+    public:
+    
+    void input(){
+        
+        int exam_score;
+        
+        for(int i=0;i<5;++i){
+            
+            cin>>exam_score;
+            scores[i]=exam_score;
+        }
+        
+    }
+    
+    int calculateTotalScore(){
+        
+        int total_score=0;
+        
+        for(int i=0;i<5;i++){
+            
+            total_score+=scores[i];
+        }
+        
+        return total_score;
+    }
+    
+    
+};
+```
+
+ - **C++ Class Templates**
+```cpp
+/*Write the class AddElements here*/
+template <class T> 
+    
+   class AddElements{ 
+    public:
+    
+T element1,element2;
+    
+AddElements(T el){
+    element1=el;
+}
+    
+T add(T el2){
+    return(element1+el2);
+}
+    
+ T concatenate(T el2){
+    return(element1+el2);
+}
+    
+};
+```
+
+ - **Box It!**
+```cpp
+class Box {
+
+
+private:
+    
+long l,b,h;
+    
+public:
+
+Box(){
+    
+    l=0;
+    b=0;
+    h=0;
+    
+    BoxesCreated++;
+}   
+    
+Box(int length, int breadth, int height){
+    
+    l=length;
+    b=breadth;
+    h=height;
+    BoxesCreated++;
+}
+
+Box(Box& B){
+    
+    l=B.l;
+    b=B.b;
+    h=B.h;
+    
+    BoxesCreated++;
+}
+    
+ ~Box()
+{
+     
+BoxesDestroyed++;
+     
+ }
+
+
+    
+int getLength(){
+    
+    return l;
+}
+    
+int getBreadth ()
+    {
+    
+    return b;
+}
+    
+    
+ int getHeight (){
+     
+     return h;
+ }
+    
+long long CalculateVolume(){
+    
+    
+    return l*b*h;
+}
+
+
+bool operator<(Box &B){
+    
+    if ((l<B.l)||(b<B.b && l==B.l) || (h<B.h && b==B.b && l==B.l) )
+    {return true;}
+    
+
+   
+    else {return false;}
+ 
+}
+
+friend ostream& operator<<(ostream& out, Box B){
+    
+  out<<B.l<<" "<<B.b<<" "<<B.h;
+  return out;
+    
+}
+
+};
+```
+
+ - **Attending Workshops**
+```cpp
+//Define the structs Workshops and Available_Workshops.
+//Implement the functions initialize and CalculateMaxWorkshops
+struct Workshop {
+    int start;
+    int duration;
+    int end;
+};
+
+struct Available_Workshops {
+    int n;
+    vector<Workshop> workshops;
+};
+
+struct sort_key
+{
+    inline bool operator() (const Workshop& struct1, const Workshop& struct2)
+    {
+        return (struct1.end < struct2.end);
+    }
+};
+
+Available_Workshops* initialize(int start_times[], int durations[], int n) {
+    Available_Workshops *ptr = new Available_Workshops();
+    ptr->n = n;
+    ptr->workshops = vector<Workshop>(n);
+    for (unsigned i=0; i<n; ++i) {
+        ptr->workshops[i].start = start_times[i];
+        ptr->workshops[i].duration = durations[i];
+        ptr->workshops[i].end = start_times[i] + durations[i];
+    }
+    
+    return ptr;
+}
+
+int CalculateMaxWorkshops(Available_Workshops *ptr) {
+    int count = 1;
+    int current_end_index = 0;
+    
+    // OLD SORT, produces good result but gives timeout (it's slow)
+    /*for (unsigned i=0; i<ptr->n-1; ++i) {
+        for (unsigned j=i+1; j<ptr->n; ++j) {
+            if (ptr->workshops[j].end < ptr->workshops[i].end) {
+                Workshop temp = ptr->workshops[i];
+                ptr->workshops[i] = ptr->workshops[j];
+                ptr->workshops[j] = temp;
+            }
+        }
+    }*/
+    
+    // NEW SORT
+    std::sort(ptr->workshops.begin(), ptr->workshops.end(), sort_key());
+    
+    for (unsigned i=1; i<ptr->n; ++i) {
+        if (ptr->workshops[i].start >= ptr->workshops[current_end_index].end) {
+            ++count;
+            current_end_index = i;
+        }
+    }
+    
+    return count;
+}
+```
+
 
 ##CREDITS
 
