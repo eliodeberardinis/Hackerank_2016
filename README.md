@@ -336,37 +336,160 @@ for(int i=0;i<n;i++)
 }
 ```
 
- - **Variable Sized Arrays**
+ - **Overload Operators**
 ```cpp
-int n,q;
+//Overload operators + and << for the class complex
+//+ should add two complex numbers as (a+ib) + (c+id) = (a+c) + i(b+d)
+//<< should print a complex number in the format "a+ib"
 
-cin>>n>>q;
 
-int** seq=new int* [n];
-for(int i=0;i<n;i++)
-    {
-      int a;
-      cin>>a;
-      int* b=new int [a];
-      for(int j=0;j<a;j++)
-        {
-          int e;
-          cin>>e;
-          b[j]=e;
-        }
-    *(seq+i)=b;
-   }
+Complex operator + (Complex k,Complex l ) 
+{ Complex z; 
+ z.a=k.a+l.a;
+ z.b=k.b+l.b;
+ return z;
+} 
 
-  for(int i=0;i<q;i++)
-  {
-  int r,s;
-  cin>>r>>s;
-  cout<<seq[r][s]<<endl;
-  }
-
-	return 0;
+ostream& operator << (ostream& o,Complex z)
+{
+    return o << z.a << "+" << "i" << z.b << endl;
 }
 ```
+
+ - **Virtual Functions**
+```cpp
+static int professorID, studentID;
+class Person
+{
+private:
+string name;
+int age;
+
+public:
+virtual void getdata() {
+    cin >> name;
+    cin >> age;
+}
+virtual void putdata() {
+    cout << name << " " << age << " ";
+}
+};
+class Professor : public Person
+{
+private:
+int publication;
+int id;
+
+public:
+Professor() {
+    professorID++;
+}
+void getdata() {
+    Person::getdata();
+    cin >> publication;
+    id = professorID;
+}
+void putdata() {
+    Person::putdata();
+    cout << publication << " " << id << endl;
+}
+};
+class Student : public Person
+{
+private:
+int marks[6];
+int id;
+
+
+public:
+Student() {
+    studentID++;
+}
+void getdata() {
+    Person::getdata();
+    for(int i = 0; i < 6; ++i)
+        cin >> marks[i];
+    id = studentID;
+}
+void putdata() {
+    Person::putdata();
+    int sum = 0;
+    for(int i = 0; i < 6; ++i)
+        sum += marks[i];
+    cout << sum << " " << id << endl;
+}
+};
+```
+
+###Strings:
+
+ - **Strings**
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+   string a;
+   string b;
+   string a1;
+   string b1;
+    
+    cin>>a;
+    cin>>b;
+    
+    cout<<a.size()<<" "<<b.size()<<"\n";
+    
+    cout<<a+b<<"\n";
+    
+    a1=a;
+    b1=b;
+    
+    a1[0]=b[0];
+    b1[0]=a[0];
+    
+    cout<<a1<<" "<<b1;
+  
+    return 0;
+}
+```
+
+ - **StringStream**
+
+```cpp
+#include <sstream>
+#include <vector>
+#include <iostream>
+using namespace std;
+
+vector<int> parseInts(string str) {
+   stringstream ss(str);
+   vector<int> final_vector;
+   int temp;
+   char ch;
+    while(ss>>temp){
+        
+        final_vector.push_back(temp);
+        ss>>ch;
+        
+    }
+    
+    return final_vector;
+}
+
+int main() {
+    string str;
+    cin >> str;
+    vector<int> integers = parseInts(str);
+    for(int i = 0; i < integers.size(); i++) {
+        cout << integers[i] << "\n";
+    }
+    
+    return 0;
+}
+```
+
+
 ##CREDITS
 
 
