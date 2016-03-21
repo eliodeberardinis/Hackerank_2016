@@ -831,6 +831,487 @@ int CalculateMaxWorkshops(Available_Workshops *ptr) {
 }
 ```
 
+###STL:
+
+ - **Vector-Sort**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() 
+{   
+    int n;
+    cin>>n;  
+    int temp;
+    
+    vector<int> MyVector;
+    
+    for(int i=0;i<n;++i){
+        
+        cin>>temp;
+        MyVector.push_back(temp);
+        
+    }
+    
+    std::sort(MyVector.begin(),MyVector.end());
+    
+    for(int i=0;i<n;++i){
+        
+        cout<<MyVector[i]<<" ";
+        
+        
+    }
+    
+    
+ 
+    return 0;
+}
+```
+
+ - **Vector-Erase**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    
+    int n;
+    cin>>n;
+    
+    int x;
+    int a,b;
+    
+    int temp;
+    
+    vector<int> MyVector;
+    
+    for(int i=0;i<n;++i){
+        
+        cin>>temp;
+        MyVector.push_back(temp);
+        
+    }
+    
+    cin>>x;
+    cin>>a;
+    cin>>b;
+    
+    MyVector.erase(MyVector.begin() + x - 1);
+    MyVector.erase(MyVector.begin() + a - 1 , MyVector.begin() + b - 1);
+    
+    cout<<MyVector.size()<<"\n";
+    
+    for(int i=0;i<MyVector.size();++i){
+        
+        cout<<MyVector[i]<<" ";
+        
+        
+    }
+
+    
+    return 0;
+}
+```
+
+ - **Lower Bound-STL**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    
+    int n;
+    cin>>n;
+    
+    int q;
+    int y;
+     
+    int temp;
+    
+    vector<int> MyVector;
+    vector<int> MyQuery;
+    
+    for(int i=0;i<n;++i){
+        
+        cin>>temp;
+        MyVector.push_back(temp);
+        
+    }
+    
+    cin>>q;
+    
+    for(int i=0;i<q;++i){
+        
+        cin>>y;
+        MyQuery.push_back(y);
+        
+    }
+    
+    std::vector<int>::iterator low;
+    
+    
+    
+      for(int i=0;i<q;++i){
+        
+          low = lower_bound(MyVector.begin(), MyVector.end(), MyQuery[i]);
+          if    (MyVector[low - MyVector.begin()] == MyQuery[i]) {cout << "Yes " << (low - MyVector.begin()+1) << endl;}
+          else                                                   { cout << "No " << (low - MyVector.begin()+1) << endl;}
+          
+           
+    
+        
+    }
+    
+    
+ 
+    return 0;
+}
+```
+
+ - **Sets-STL**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <set>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    
+    set<int> s;
+    int q;
+    cin>>q;
+    
+    int x;
+    int y;
+    
+    for(int i=0;i<q;++i){
+        
+        cin>>y;
+        cin>>x;
+        
+        switch (y){
+            case 1: s.insert(x);
+                    break;
+        
+            case 2: s.erase(x);
+                    break;
+        
+            case 3:
+                   set<int>::iterator itr=s.find(x);
+            
+                   if   (itr != s.end()) {cout<<"Yes"<<endl;}
+                   else                  {cout<<"No"<<endl;}
+                   break;
+        }
+    }
+    
+    
+    return 0;
+}
+```
+
+ - **Maps-STL**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <set>
+#include <map>
+#include <algorithm>
+#include <string>
+using namespace std;
+
+
+int main() {
+    
+    map<string,int> m;
+    int q;
+    cin>>q;
+    int type;
+    
+    string name;
+    int grade;
+    
+    map<string,int>::iterator itr;
+    
+    for(int i=0;i<q;++i){
+        
+        cin>>type;
+        
+        switch (type){
+            
+            
+            case 1: cin>>name;
+                    cin>>grade;
+                    itr = m.find(name); 
+                    if (itr == m.end()) {m.insert(make_pair(name, grade));}
+                    else                {itr->second += grade;}
+                    break;
+        
+            case 2: cin>>name;
+                    m.erase(name);
+                    break;
+        
+            case 3:cin>>name;
+                   itr=m.find(name);
+                   if(itr!=m.end()) {cout<<itr->second<<endl;}
+                   else             {cout<<"0"<<endl;}
+                 
+                   break;
+        }
+
+        
+        
+    }
+    
+    
+    return 0;
+}
+```
+ - **Deque-STL**
+```cpp
+#include <iostream>
+#include <deque> 
+#include <vector>
+using namespace std;
+
+void printKMax(int arr[], int n, int k)
+{
+    int max = arr[0];
+    int imax = 0;
+    for (int i=1; i<k; ++i)
+    {
+        if (arr[i] > max)
+        {
+            max = arr[i];
+            imax = i;
+        }
+    }
+    cout << max << ' ';
+    
+    for (int i=k; i<n; ++i)
+    {
+        if (arr[i] > max || imax < i-k+1)
+        {
+            max = arr[i-k+1];
+            imax = i-k+1;
+            for (int j=i-k+2; j<=i; ++j)
+            {
+                if (arr[j] > max)
+                {
+                    max = arr[j];
+                    imax = j;
+                }
+            }
+        }
+        cout << max << ' ';
+    }
+    cout << '\n';
+}
+int main(){
+  
+   int t;
+   cin >> t;
+   while(t>0) {
+      int n,k;
+       cin >> n >> k;
+       int i;
+       int arr[n];
+       for(i=0;i<n;i++)
+            cin >> arr[i];
+       printKMax(arr, n, k);
+       t--;
+     }
+     return 0;
+}
+```
+
+###Inheritance:
+
+ - **Inheritance Introduction**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+class Triangle{
+    public:
+       void triangle(){
+           cout<<"I am a triangle\n";
+       }
+};
+class Isosceles : public Triangle{
+    public:
+       void isosceles(){
+          cout<<"I am an isosceles triangle\n";
+       }
+    
+    void description(){
+          cout<<"In an isosceles triangle two sides are equal\n";
+       }
+        //Write your code here.
+};
+int main(){
+    Isosceles isc;
+    isc.isosceles();
+    isc.description();
+    isc.triangle();
+    return 0;
+}
+```
+
+ - **Rectangle Area**
+```cpp
+class Rectangle{
+  public:
+    
+    int width;
+    int height;
+    
+  
+    
+    void Display(){
+        
+        cout<<width<<" "<<height<<"\n";
+        
+    }
+    
+    
+};
+
+class RectangleArea: public Rectangle{
+    public:
+    
+    void Input(){
+        
+        cin>>width;
+        cin>>height;
+        
+    }
+    
+      void Display(){
+        
+        int area;
+        
+          area=width*height;
+          
+          cout<<area;
+          
+        
+    }
+    
+    
+};
+```
+
+ - **Multi Level Inheritance**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+class Triangle{
+   public:
+      void triangle(){
+         cout<<"I am a triangle\n";
+      }
+};
+
+class Isosceles : public Triangle{
+     public:
+        void isosceles(){
+          cout<<"I am an isosceles triangle\n";
+        }
+};
+
+   
+class Equilateral : public Isosceles{
+     public:
+        void equilateral(){
+          cout<<"I am an equilateral triangle\n";
+        }
+};
+
+int main(){
+  
+    Equilateral eqr;
+    eqr.equilateral();
+    eqr.isosceles();
+    eqr.triangle();
+    return 0;
+}
+```
+
+ - **Accessing Inherited Functions**
+```cpp
+class D: protected A,B,C
+{
+
+	int val;
+	public:
+		//Initially val is 1
+		 D()
+		 {
+		 	val=1;
+		 }
+
+
+		 //Implement this function
+		 void update_val(int new_val)
+		 {
+            int a = new_val;
+            while ( a %2 == 0)
+          {
+               a = a/2;
+               A::func(val);
+          }
+             
+           while ( a % 3 == 0)
+          {
+         a = a/3;
+         B::func(val);
+          }
+             
+         while ( a % 5 == 0)
+          {
+         a = a/5;
+         C::func(val);
+         }
+			
+		 }
+		 //For Checking Purpose
+		 void check(int); //Do not delete this line.
+};
+```
+
+
 
 ##CREDITS
 
