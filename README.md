@@ -47,6 +47,8 @@ Once again, the challenges I solved are listed below and separated in their subd
 
 #Challenges Solved with solution code
 
+Below are listed all the challenges I solved sorted by their main domain and subdomain.
+
 ##C/C++ Domain
 
 ###Introduction:
