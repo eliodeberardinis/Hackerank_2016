@@ -93,7 +93,280 @@ int main() {
 }
 
 ```
+ - **Basic Data Types**
+```cpp
+#include <iostream>
+#include <cstdio>
+using namespace std;
 
+int main() {
+    int a;
+    long b;
+    long long c;
+    char d;
+    float e;
+    double f;
+    
+    scanf("%d %ld %lld %c %f %lf", &a, &b, &c, &d, &e, &f);
+    
+    printf("%d\n%ld\n%lld\n%c\n%f\n%lf", a , b,c,d,e,f);
+    
+        
+    return 0;
+}
+```
+
+ - **Conditional Statements**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+ unsigned int n;
+    cin>>n;
+    
+    if(n>=1 && n<=9)
+        {
+        
+        if      (n==1){cout<<"one";}
+        else if (n==2){cout<<"two";}
+        else if (n==3){cout<<"three";}
+        else if (n==4){cout<<"four";}
+        else if (n==5){cout<<"five";}
+        else if (n==6){cout<<"six";}
+        else if (n==7){cout<<"seven";}
+        else if (n==8){cout<<"eight";}
+        else if (n==9){cout<<"nine";}
+    }
+    
+    else {cout<<"Greater than 9";}
+ 
+   return 0;
+}
+```
+
+ - **For Loop**
+```cpp
+#include <iostream>
+#include <cstdio>
+using namespace std;
+
+int main() {
+    int a,b;
+    
+    cin>>a;
+    cin>>b;
+    
+    for(int i=a;i<=b;i++)
+        {
+        if(i<=9)
+            {
+            if     (i==1){cout<<"one"<<endl;}
+            else if(i==2){cout<<"two"<<endl;}
+            else if(i==3){cout<<"three"<<endl;}
+            else if(i==4){cout<<"four"<<endl;}
+            else if(i==5){cout<<"five"<<endl;}
+            else if(i==6){cout<<"six"<<endl;}
+            else if(i==7){cout<<"seven"<<endl;}
+            else if(i==8){cout<<"eight"<<endl;}
+            else if(i==9){cout<<"nine"<<endl;}
+        }
+        
+        else{
+            
+            if(i%2==0){cout<<"even"<<endl;}
+            else      {cout<<"odd"<<endl;}
+            
+        }
+        
+    }
+    return 0;
+}
+```
+
+ - **Functions**
+```cpp
+#include <iostream>
+#include <cstdio>
+using namespace std;
+
+
+int max_of_four(int a, int b, int c, int d){
+    
+    int max=a;
+    if(b>max){max=b;}
+    if(c>max){max=c;}
+    if(d>max){max=d;}
+    
+    return max;
+}
+
+
+int main() {
+    int a, b, c, d;
+    scanf("%d %d %d %d", &a, &b, &c, &d);
+    int ans = max_of_four(a, b, c, d);
+    printf("%d", ans);
+    
+    return 0;
+}
+```
+
+
+ - **Pointer**
+```cpp
+#include <stdio.h>
+
+void update(int *a,int *b) {
+    int tempA;
+    int tempB;
+    
+    tempA=*a+*b;
+    
+    if(*a>*b) {tempB=*a-*b;}
+    else      {tempB= *b-*a;}
+    
+    *a=tempA;
+    *b=tempB;
+}
+
+int main() {
+    int a, b;
+    int *pa = &a, *pb = &b;
+    
+    scanf("%d %d", &a, &b);
+    update(pa, pb);
+    printf("%d\n%d", a, b);
+
+    return 0;
+}
+```
+
+ - **Arrays Introduction**
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    int N;
+    cin>>N;
+    int arr[N];
+    
+    for(int i=0;i<N;i++)
+        {
+       
+        cin>>arr[i]; 
+
+       }
+    
+    for(int i=(N-1);i>=0;i--)
+        {
+        
+        cout<<arr[i]<<" ";
+    }
+    
+    
+    return 0;
+}
+```
+
+ - **Operator Overloading**
+```cpp
+class Matrix{
+   
+   public:
+   vector<vector<int> > a; 
+    
+    Matrix & operator + (const Matrix &y){
+        
+           for (int m=0; m<y.a.size(); ++m) {
+        for (int n=0; n<y.a[0].size(); ++n) {
+            this->a[m][n] = this->a[m][n] + y.a[m][n];
+        }
+    }
+
+    return *this;
+    }
+        
+        
+    
+    
+};
+```
+
+ - **Variable Sized Arrays**
+```cpp
+int n,q;
+
+cin>>n>>q;
+
+int** seq=new int* [n];
+for(int i=0;i<n;i++)
+    {
+      int a;
+      cin>>a;
+      int* b=new int [a];
+      for(int j=0;j<a;j++)
+        {
+          int e;
+          cin>>e;
+          b[j]=e;
+        }
+    *(seq+i)=b;
+   }
+
+  for(int i=0;i<q;i++)
+  {
+  int r,s;
+  cin>>r>>s;
+  cout<<seq[r][s]<<endl;
+  }
+
+	return 0;
+}
+```
+
+ - **Variable Sized Arrays**
+```cpp
+int n,q;
+
+cin>>n>>q;
+
+int** seq=new int* [n];
+for(int i=0;i<n;i++)
+    {
+      int a;
+      cin>>a;
+      int* b=new int [a];
+      for(int j=0;j<a;j++)
+        {
+          int e;
+          cin>>e;
+          b[j]=e;
+        }
+    *(seq+i)=b;
+   }
+
+  for(int i=0;i<q;i++)
+  {
+  int r,s;
+  cin>>r>>s;
+  cout<<seq[r][s]<<endl;
+  }
+
+	return 0;
+}
+```
 ##CREDITS
 
 
